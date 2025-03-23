@@ -20,6 +20,7 @@ where:
 $$
 y = v_0 \sin(\theta) t - \frac{1}{2} g t^2
 $$
+
 where:
 - $g$ is the acceleration due to gravity (typically $9.81 \text{ m/s}^2$).
 
@@ -51,4 +52,5 @@ From the equation, we observe:
 - Maximum range is achieved at $\theta = 45^\circ$, since $\sin(2\theta) = 1$.
 - If the angle is too small ($\theta \approx 0^\circ$), the projectile moves almost straight and falls nearby.
 - If the angle is too large ($\theta \approx 90^\circ$), the projectile moves mostly upward and lands almost at the launch point.
-
+---
+## 4. Range Analysis Based on Angle
