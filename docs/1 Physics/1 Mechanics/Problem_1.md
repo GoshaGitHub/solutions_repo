@@ -60,26 +60,29 @@ Also, to better understand projectile motion, I wrote a Python script that simul
 import numpy as np
 import matplotlib.pyplot as plt
 
-def projectile_motion(v0, theta, g=9.81):
-    theta = np.radians(theta)
-    t_flight = (2 * v0 * np.sin(theta)) / g
-    t = np.linspace(0, t_flight, num=100)
-    x = v0 * np.cos(theta) * t
-    y = v0 * np.sin(theta) * t - 0.5 * g * t**2
-    return x, y
+def draw_trajectories(angles, initial_velocity, g):
+    plt.figure(figsize=(10, 5))
+    
+    for angle in angles:
+        angle_rad = np.radians(angle)
+        time_of_flight = (2 * (initial_velocity * np.sin(angle_rad))) / g
+        t = np.linspace(0, time_of_flight, num=500)
+        
+        x = initial_velocity * np.cos(angle_rad) * t
+        y = initial_velocity * np.sin(angle_rad) * t - 0.5 * g * t**2
+        
+        plt.plot(x, y, label=f'Angle: {angle}°')
+    
+    plt.title(f'Projectile Trajectories (Initial Velocity: {initial_velocity} m/s)')
+    plt.xlabel('Distance (m)')
+    plt.ylabel('Height (m)')
+    plt.legend()
+    plt.grid(True)
+    plt.show()
 
-# Example parameters
-v0 = 20  # Initial velocity in m/s
-theta = 45  # Launch angle in degrees
-x, y = projectile_motion(v0, theta)
+initial_velocity = 20 
+g = 9.81
 
-plt.plot(x, y)
-plt.xlabel('Horizontal Distance (m)')
-plt.ylabel('Vertical Distance (m)')
-plt.title('Projectile Motion')
-plt.grid()
-plt.show()
-```
+angles = list(map(float, input("Enter angles separated by spaces (in degrees): ").split()))
 
-This script generates a trajectory plot, illustrating how a projectile moves in two dimensions. By adjusting the $v_0$ and $\theta$ values, you can explore different scenarios of projectile motion.
-
+draw_trajectories(angles, initial_velocity, g)
