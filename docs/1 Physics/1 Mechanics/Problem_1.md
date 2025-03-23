@@ -86,3 +86,4 @@ g = 9.81
 angles = list(map(float, input("Enter angles separated by spaces (in degrees): ").split()))
 
 draw_trajectories(angles, initial_velocity, g)
+
