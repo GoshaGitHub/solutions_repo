@@ -231,30 +231,32 @@ $$</p>
 <hr/>
 <h2 id="4-python-code-for-simulation">4. Python code for simulation</h2>
 <p>Also, to better understand projectile motion, I wrote a Python script that simulates and visualizes the trajectory of our projectile. The script plots the parabolic path of a projectile based on different launch angles and initial velocities, which you can write by yourself. It uses the <code>matplotlib</code> and <code>numpy</code> libraries to generate the graphs. Here is the code:</p>
-<pre><code class="language-python">import numpy as np
-import matplotlib.pyplot as plt
+<p>```python
+import numpy as np
+import matplotlib.pyplot as plt</p>
+<p>def draw_trajectories(angles, initial_velocity, g):
+    plt.figure(figsize=(10, 5))</p>
+<pre><code>for angle in angles:
+    angle_rad = np.radians(angle)
+    time_of_flight = (2 * (initial_velocity * np.sin(angle_rad))) / g
+    t = np.linspace(0, time_of_flight, num=500)
 
-def projectile_motion(v0, theta, g=9.81):
-    theta = np.radians(theta)
-    t_flight = (2 * v0 * np.sin(theta)) / g
-    t = np.linspace(0, t_flight, num=100)
-    x = v0 * np.cos(theta) * t
-    y = v0 * np.sin(theta) * t - 0.5 * g * t**2
-    return x, y
+    x = initial_velocity * np.cos(angle_rad) * t
+    y = initial_velocity * np.sin(angle_rad) * t - 0.5 * g * t**2
 
-# Example parameters
-v0 = 20  # Initial velocity in m/s
-theta = 45  # Launch angle in degrees
-x, y = projectile_motion(v0, theta)
+    plt.plot(x, y, label=f'Angle: {angle}°')
 
-plt.plot(x, y)
-plt.xlabel('Horizontal Distance (m)')
-plt.ylabel('Vertical Distance (m)')
-plt.title('Projectile Motion')
-plt.grid()
+plt.title(f'Projectile Trajectories (Initial Velocity: {initial_velocity} m/s)')
+plt.xlabel('Distance (m)')
+plt.ylabel('Height (m)')
+plt.legend()
+plt.grid(True)
 plt.show()
 </code></pre>
-<p>This script generates a trajectory plot, illustrating how a projectile moves in two dimensions. By adjusting the <span class="arithmatex">\(v_0\)</span> and <span class="arithmatex">\(\theta\)</span> values, you can explore different scenarios of projectile motion.</p>
+<p>initial_velocity = 20 
+g = 9.81</p>
+<p>angles = list(map(float, input("Enter angles separated by spaces (in degrees): ").split()))</p>
+<p>draw_trajectories(angles, initial_velocity, g)</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
