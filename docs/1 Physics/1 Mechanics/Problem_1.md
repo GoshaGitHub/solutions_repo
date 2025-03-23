@@ -53,4 +53,33 @@ From the equation, we observe:
 - If the angle is too small ($\theta \approx 0^\circ$), the projectile moves almost straight and falls nearby.
 - If the angle is too large ($\theta \approx 90^\circ$), the projectile moves mostly upward and lands almost at the launch point.
 ---
-## 4. Range Analysis Based on Angle
+## 4. Python code for simulation
+Also, to better understand projectile motion, I wrote a Python script that simulates and visualizes the trajectory of our projectile. The script plots the parabolic path of a projectile based on different launch angles and initial velocities, which you can write by yourself. It uses the `matplotlib` and `numpy` libraries to generate the graphs. Here is the code:
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+def projectile_motion(v0, theta, g=9.81):
+    theta = np.radians(theta)
+    t_flight = (2 * v0 * np.sin(theta)) / g
+    t = np.linspace(0, t_flight, num=100)
+    x = v0 * np.cos(theta) * t
+    y = v0 * np.sin(theta) * t - 0.5 * g * t**2
+    return x, y
+
+# Example parameters
+v0 = 20  # Initial velocity in m/s
+theta = 45  # Launch angle in degrees
+x, y = projectile_motion(v0, theta)
+
+plt.plot(x, y)
+plt.xlabel('Horizontal Distance (m)')
+plt.ylabel('Vertical Distance (m)')
+plt.title('Projectile Motion')
+plt.grid()
+plt.show()
+```
+
+This script generates a trajectory plot, illustrating how a projectile moves in two dimensions. By adjusting the $v_0$ and $\theta$ values, you can explore different scenarios of projectile motion.
+
