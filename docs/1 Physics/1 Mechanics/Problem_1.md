@@ -57,6 +57,7 @@ From the equation, we observe:
 Also, to better understand projectile motion, I wrote a Python script that simulates and visualizes the trajectory of our projectile. The script plots the parabolic path of a projectile based on different launch angles and initial velocities, which you can write by yourself. It uses the `matplotlib` and `numpy` libraries to generate the graphs. Here is the code:
 
 ```python
+
     import numpy as np
     import matplotlib.pyplot as plt
 
