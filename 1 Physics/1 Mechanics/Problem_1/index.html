@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 1 - Physics and Mathematics</title>
+<title>Theoretical Basis: Projectile Motion - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 1";
+        var mkdocs_page_name = "Theoretical Basis: Projectile Motion";
         var mkdocs_page_input_path = "1 Physics/1 Mechanics/Problem_1.md";
         var mkdocs_page_url = null;
       </script>
@@ -46,8 +46,18 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal current">1 Mechanics</a>
 <ul class="current">
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">Theoretical Basis: Projectile Motion</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#1-motion-of-a-projectile">1. Motion of a Projectile</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#key-equations-of-motion">Key Equations of Motion</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#2-range-of-flight-r">2. Range of Flight (R)</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#3-range-analysis-based-on-angle">3. Range Analysis Based on Angle</a>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Problem_2/">Problem 2</a>
@@ -163,7 +173,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">1 Physics</li>
 <li class="breadcrumb-item">1 Mechanics</li>
-<li class="breadcrumb-item active">Problem 1</li>
+<li class="breadcrumb-item active">Theoretical Basis: Projectile Motion</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -171,9 +181,51 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-1">Problem 1</h1>
-<p>some text</p>
-<p>1231323123</p>
+<h1 id="theoretical-basis-projectile-motion">Theoretical Basis: Projectile Motion</h1>
+<h2 id="1-motion-of-a-projectile">1. Motion of a Projectile</h2>
+<p>When a projectile (such as a ball, bullet, or rocket) is launched at an angle to the horizontal, it follows a parabolic trajectory. This occurs due to two forces:</p>
+<ul>
+<li>The horizontal velocity remains constant (assuming air resistance is negligible).</li>
+<li>The vertical velocity changes due to gravity.</li>
+</ul>
+<h3 id="key-equations-of-motion">Key Equations of Motion</h3>
+<h4 id="horizontal-coordinate-x">Horizontal coordinate (x):</h4>
+<p>[
+x = v_0 \cos(\theta) t
+]
+where:
+- <span class="arithmatex">\( v_0 \)</span> is the initial velocity,
+- <span class="arithmatex">\( \theta \)</span> is the launch angle,
+- <span class="arithmatex">\( t \)</span> is the time.</p>
+<h4 id="vertical-coordinate-y">Vertical coordinate (y):</h4>
+<p>[
+y = v_0 \sin(\theta) t - \frac{1}{2} g t^2
+]
+where:
+- <span class="arithmatex">\( g \)</span> is the acceleration due to gravity (typically <span class="arithmatex">\( 9.81 \text{ m/s}^2 \)</span>).</p>
+<hr/>
+<h2 id="2-range-of-flight-r">2. Range of Flight (R)</h2>
+<p>The range is the horizontal distance traveled by the projectile before it lands.</p>
+<p>To find the range, we first determine the flight time (T), which is the time it takes for the projectile to return to the ground (<span class="arithmatex">\( y = 0 \)</span>):
+[
+T = \frac{2 v_0 \sin(\theta)}{g}
+]</p>
+<p>Now, substituting <span class="arithmatex">\( T \)</span> into the equation for <span class="arithmatex">\( x \)</span>:
+[
+R = v_0 \cos(\theta) \cdot \frac{2 v_0 \sin(\theta)}{g}
+]</p>
+<p>Using the trigonometric identity <span class="arithmatex">\( 2 \sin(\theta) \cos(\theta) = \sin(2\theta) \)</span>, we get:
+[
+R = \frac{v_0^2 \sin(2\theta)}{g}
+]</p>
+<hr/>
+<h2 id="3-range-analysis-based-on-angle">3. Range Analysis Based on Angle</h2>
+<p>From the equation, we observe:</p>
+<ul>
+<li>Maximum range is achieved at <span class="arithmatex">\( \theta = 45^\circ \)</span>, since <span class="arithmatex">\( \sin(2\theta) = 1 \)</span>.</li>
+<li>If the angle is too small (<span class="arithmatex">\( \theta \approx 0^\circ \)</span>), the projectile moves almost straight and falls nearby.</li>
+<li>If the angle is too large (<span class="arithmatex">\( \theta \approx 90^\circ \)</span>), the projectile moves mostly upward and lands almost at the launch point.</li>
+</ul>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
