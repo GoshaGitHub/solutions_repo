@@ -80,9 +80,9 @@ Also, to better understand projectile motion, I wrote a Python script that simul
         plt.grid(True)
         plt.show()
 
-    initial_velocity = 20 
     g = 9.81
 
+    initial_velocity = int(input("Enter initial velocity (in m/s): "))
     angles = list(map(float, input("Enter angles separated by spaces (in degrees): ").split()))
 
     draw_trajectories(angles, initial_velocity, g)
@@ -111,10 +111,10 @@ Also, to better understand projectile motion, I wrote a Python script that simul
 
 8. plt.show(): Displays the plot.
 
-9. initial_velocity = 20: Sets the initial speed (20 m/s).
+9. g = 9.81: Sets gravitational acceleration (9.81 m/s²).
 
-10. g = 9.81: Sets gravitational acceleration (9.81 m/s²).
+10. initial_velocity = int(input(...)): Takes user input of initial velocoty
 
-11. angles = list(map(float, input(...).split())): Takes user input (angles in degrees) and converts them to a list of floats.
+    angles = list(map(float, input(...).split())): Takes user input of angles
 
-12. draw_trajectories(angles, initial_velocity, g): Calls the function to draw trajectories.
+11. draw_trajectories(angles, initial_velocity, g): Calls the function to draw trajectories.
