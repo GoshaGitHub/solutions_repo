@@ -258,9 +258,9 @@ $$</p>
         plt.grid(True)
         plt.show()
 
-    initial_velocity = 20 
     g = 9.81
 
+    initial_velocity = int(input("Enter initial velocity (in m/s): "))
     angles = list(map(float, input("Enter angles separated by spaces (in degrees): ").split()))
 
     draw_trajectories(angles, initial_velocity, g)
@@ -297,13 +297,11 @@ $$</p>
 <p>plt.show(): Displays the plot.</p>
 </li>
 <li>
-<p>initial_velocity = 20: Sets the initial speed (20 m/s).</p>
-</li>
-<li>
 <p>g = 9.81: Sets gravitational acceleration (9.81 m/s²).</p>
 </li>
 <li>
-<p>angles = list(map(float, input(...).split())): Takes user input (angles in degrees) and converts them to a list of floats.</p>
+<p>initial_velocity = int(input(...)): Takes user input of initial velocoty</p>
+<p>angles = list(map(float, input(...).split())): Takes user input of angles</p>
 </li>
 <li>
 <p>draw_trajectories(angles, initial_velocity, g): Calls the function to draw trajectories.</p>
