@@ -90,3 +90,31 @@ Also, to better understand projectile motion, I wrote a Python script that simul
 - This code creates a graph that shows the trajectory of a projectile, when launched from different angles and with different initial speeds, you can enter these values ​​yourself. Also on this graph are 2 axes, distance and height, which show us exactly how high and far the projectile flew, here is the graph:
 
 ![alt text](image.png)
+---
+## 5. Brief description, how this code works
+
+1. plt.figure(figsize=(10, 5)): Creates a figure with a specified size (10x5 inches).
+
+2. angle_rad = np.radians(angle): Converts the angle from degrees to radians.
+
+3. time_of_flight = (2 * (initial_velocity * np.sin(angle_rad))) / g: Calculates the total flight time of the projectile.
+
+4. t = np.linspace(0, time_of_flight, num=500): Generates 500 time points between 0 and time_of_flight.
+
+5. x = initial_velocity * np.cos(angle_rad) * t: Computes horizontal positions (distance).
+
+    y = initial_velocity * np.sin(angle_rad) * t - 0.5 * g * t**2: Computes vertical positions (height).
+
+6. plt.plot(x, y, label=f'Angle: {angle}°'): Plots the trajectory and adds a label.
+
+7. plt.title(...), plt.xlabel(...), plt.ylabel(...): Sets the title and axis labels.
+
+8. plt.show(): Displays the plot.
+
+9. initial_velocity = 20: Sets the initial speed (20 m/s).
+
+10. g = 9.81: Sets gravitational acceleration (9.81 m/s²).
+
+11. angles = list(map(float, input(...).split())): Takes user input (angles in degrees) and converts them to a list of floats.
+
+12. draw_trajectories(angles, initial_velocity, g): Calls the function to draw trajectories.
