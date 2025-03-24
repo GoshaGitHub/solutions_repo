@@ -60,6 +60,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#4-python-code-for-simulation">4. Python code for simulation</a>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#_1"></a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#5-brief-description-how-this-code-works">5. Brief description, how this code works</a>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Problem_2/">Problem 2</a>
@@ -264,7 +268,47 @@ $$</p>
 <ul>
 <li>This code creates a graph that shows the trajectory of a projectile, when launched from different angles and with different initial speeds, you can enter these values ​​yourself. Also on this graph are 2 axes, distance and height, which show us exactly how high and far the projectile flew, here is the graph:</li>
 </ul>
-<p><img alt="alt text" src="../image.png"/></p>
+<h2 id="_1"><img alt="alt text" src="../image.png"/></h2>
+<h2 id="5-brief-description-how-this-code-works">5. Brief description, how this code works</h2>
+<ol>
+<li>
+<p>plt.figure(figsize=(10, 5)): Creates a figure with a specified size (10x5 inches).</p>
+</li>
+<li>
+<p>angle_rad = np.radians(angle): Converts the angle from degrees to radians.</p>
+</li>
+<li>
+<p>time_of_flight = (2 * (initial_velocity * np.sin(angle_rad))) / g: Calculates the total flight time of the projectile.</p>
+</li>
+<li>
+<p>t = np.linspace(0, time_of_flight, num=500): Generates 500 time points between 0 and time_of_flight.</p>
+</li>
+<li>
+<p>x = initial_velocity * np.cos(angle_rad) * t: Computes horizontal positions (distance).</p>
+<p>y = initial_velocity * np.sin(angle_rad) * t - 0.5 * g * t**2: Computes vertical positions (height).</p>
+</li>
+<li>
+<p>plt.plot(x, y, label=f'Angle: {angle}°'): Plots the trajectory and adds a label.</p>
+</li>
+<li>
+<p>plt.title(...), plt.xlabel(...), plt.ylabel(...): Sets the title and axis labels.</p>
+</li>
+<li>
+<p>plt.show(): Displays the plot.</p>
+</li>
+<li>
+<p>initial_velocity = 20: Sets the initial speed (20 m/s).</p>
+</li>
+<li>
+<p>g = 9.81: Sets gravitational acceleration (9.81 m/s²).</p>
+</li>
+<li>
+<p>angles = list(map(float, input(...).split())): Takes user input (angles in degrees) and converts them to a list of floats.</p>
+</li>
+<li>
+<p>draw_trajectories(angles, initial_velocity, g): Calls the function to draw trajectories.</p>
+</li>
+</ol>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
