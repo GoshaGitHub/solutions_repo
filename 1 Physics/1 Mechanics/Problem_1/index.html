@@ -231,36 +231,35 @@ $$</p>
 <hr/>
 <h2 id="4-python-code-for-simulation">4. Python code for simulation</h2>
 <p>Also, to better understand projectile motion, I wrote a Python script that simulates and visualizes the trajectory of our projectile. The script plots the parabolic path of a projectile based on different launch angles and initial velocities, which you can write by yourself. It uses the <code>matplotlib</code> and <code>numpy</code> libraries to generate the graphs. Here is the code:</p>
-<p>```python</p>
-<pre><code>import numpy as np
-import matplotlib.pyplot as plt
+<pre><code class="language-python">    import numpy as np
+    import matplotlib.pyplot as plt
 
-def draw_trajectories(angles, initial_velocity, g):
-    plt.figure(figsize=(10, 5))
+    def draw_trajectories(angles, initial_velocity, g):
+        plt.figure(figsize=(10, 5))
 
-    for angle in angles:
-        angle_rad = np.radians(angle)
-        time_of_flight = (2 * (initial_velocity * np.sin(angle_rad))) / g
-        t = np.linspace(0, time_of_flight, num=500)
+        for angle in angles:
+            angle_rad = np.radians(angle)
+            time_of_flight = (2 * (initial_velocity * np.sin(angle_rad))) / g
+            t = np.linspace(0, time_of_flight, num=500)
 
-        x = initial_velocity * np.cos(angle_rad) * t
-        y = initial_velocity * np.sin(angle_rad) * t - 0.5 * g * t**2
+            x = initial_velocity * np.cos(angle_rad) * t
+            y = initial_velocity * np.sin(angle_rad) * t - 0.5 * g * t**2
 
-        plt.plot(x, y, label=f'Angle: {angle}°')
+            plt.plot(x, y, label=f'Angle: {angle}°')
 
-    plt.title(f'Projectile Trajectories (Initial Velocity: {initial_velocity} m/s)')
-    plt.xlabel('Distance (m)')
-    plt.ylabel('Height (m)')
-    plt.legend()
-    plt.grid(True)
-    plt.show()
+        plt.title(f'Projectile Trajectories (Initial Velocity: {initial_velocity} m/s)')
+        plt.xlabel('Distance (m)')
+        plt.ylabel('Height (m)')
+        plt.legend()
+        plt.grid(True)
+        plt.show()
 
-initial_velocity = 20 
-g = 9.81
+    initial_velocity = 20 
+    g = 9.81
 
-angles = list(map(float, input("Enter angles separated by spaces (in degrees): ").split()))
+    angles = list(map(float, input("Enter angles separated by spaces (in degrees): ").split()))
 
-draw_trajectories(angles, initial_velocity, g)
+    draw_trajectories(angles, initial_velocity, g)
 </code></pre>
 </div>
 </div><footer>
