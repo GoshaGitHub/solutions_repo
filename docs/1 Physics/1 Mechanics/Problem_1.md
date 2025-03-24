@@ -87,3 +87,6 @@ Also, to better understand projectile motion, I wrote a Python script that simul
 
     draw_trajectories(angles, initial_velocity, g)
 ```
+- This code creates a graph that shows the trajectory of a projectile, when launched from different angles and with different initial speeds, you can enter these values ​​yourself. Also on this graph are 2 axes, distance and height, which show us exactly how high and far the projectile flew, here is the graph:
+
+![alt text](image.png)
