@@ -260,18 +260,16 @@ $$</li>
 <p>When air resistance is considered, the equations of motion become more complex. The drag force opposes the motion and is typically proportional to the velocity (for low speeds). The analytical solutions for horizontal x(t) and vertical y(t) positions are:</p>
 <h3 id="horizontal-position">Horizontal position:</h3>
 <div class="arithmatex">\[
-x(t) = \frac{v_x0} m b \left(1 - e^{-\frac{b}{m} t}\right)
+x(t) = \frac{v_0 \cos(\theta)} m b \left(1 - e^{-\frac{b}{m} t}\right)
 \]</div>
 <p>where:
-- <span class="arithmatex">\(v_{x0} = v_0 \cos(\theta)\)</span> is the initial horizontal velocity,
 - <span class="arithmatex">\(b\)</span> is the drag coefficient,
 - <span class="arithmatex">\(m\)</span> is the mass of the projectile.</p>
 <h3 id="vertical-position">Vertical position:</h3>
 <div class="arithmatex">\[
-y(t) = \left(\frac{v_{y0} m}{b} + \frac{m^2 g}{b^2}\right) \left(1 - e^{-\frac{b}{m} t}\right) - \frac{mg}{b} t
+y(t) = \left(\frac{v_0 \sin(\theta) m}{b} + \frac{m^2 g}{b^2}\right) \left(1 - e^{-\frac{b}{m} t}\right) - \frac{mg}{b} t
 \]</div>
-<p>where:
-- <span class="arithmatex">\(v_{y0} = v_0 \sin(\theta)\)</span> is the initial vertical velocity.</p>
+<p>where:</p>
 <ul>
 <li>The horizontal motion is no longer linear due to the exponential decay term.</li>
 <li>The vertical motion includes a terminal velocity term (<span class="arithmatex">\(\frac{mg}{b}\)</span>) as <span class="arithmatex">\(t \to \infty\)</span>.</li>
