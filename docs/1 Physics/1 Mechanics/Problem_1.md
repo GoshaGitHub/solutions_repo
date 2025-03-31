@@ -67,21 +67,19 @@ When air resistance is considered, the equations of motion become more complex. 
 
 ### Horizontal position:
 $$
-x(t) = \frac{v_x0} m b \left(1 - e^{-\frac{b}{m} t}\right)
+x(t) = \frac{v_0 \cos(\theta)} m b \left(1 - e^{-\frac{b}{m} t}\right)
 $$
 
 where:
-- $v_{x0} = v_0 \cos(\theta)$ is the initial horizontal velocity,
 - $b$ is the drag coefficient,
 - $m$ is the mass of the projectile.
 
 ### Vertical position:
 $$
-y(t) = \left(\frac{v_{y0} m}{b} + \frac{m^2 g}{b^2}\right) \left(1 - e^{-\frac{b}{m} t}\right) - \frac{mg}{b} t
+y(t) = \left(\frac{v_0 \sin(\theta) m}{b} + \frac{m^2 g}{b^2}\right) \left(1 - e^{-\frac{b}{m} t}\right) - \frac{mg}{b} t
 $$
 
 where:
-- $v_{y0} = v_0 \sin(\theta)$ is the initial vertical velocity.
 
 - The horizontal motion is no longer linear due to the exponential decay term.
 - The vertical motion includes a terminal velocity term ($\frac{mg}{b}$) as $t \to \infty$.
