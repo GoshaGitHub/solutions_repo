@@ -36,7 +36,8 @@ When air resistance (drag force proportional to velocity) is included:
 **Modified equations (b = 0.1):**
 $$
 m{x}'' = -b{x}' \\
-
+$$
+$$
 m{y}'' = -mg - b{y}'
 $$
 
@@ -44,14 +45,16 @@ $$
 1. Horizontal:
 $$
 {x}' = v_x \\
-
+$$
+$$
 {v}_x' = {x}'' = -\frac{b}{m}v_x
 $$
 
 2. Vertical:
 $$
 {y}' = v_y \\
-
+$$
+$$
 {v}_y' = {y}'' = -g - \frac{b}{m}v_y
 $$
 ---
