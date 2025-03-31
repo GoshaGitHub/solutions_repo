@@ -37,6 +37,7 @@ When air resistance (drag force proportional to velocity) is included:
 $$
 m{x}'' = -b{x}' \\
 $$
+
 $$
 m{y}'' = -mg - b{y}'
 $$
