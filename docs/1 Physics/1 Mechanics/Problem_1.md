@@ -44,12 +44,14 @@ $$
 1. Horizontal:
 $$
 {x}' = v_x \\
+
 {v}_x' = {x}'' = -\frac{b}{m}v_x
 $$
 
 2. Vertical:
 $$
 {y}' = v_y \\
+
 {v}_y' = {y}'' = -g - \frac{b}{m}v_y
 $$
 ---
