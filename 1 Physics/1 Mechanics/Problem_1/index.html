@@ -54,15 +54,31 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#2-range-of-flight-r">2. Range of Flight (R)</a>
+<li class="toctree-l3"><a class="reference internal" href="#2-differential-equations-with-air-resistance">2. Differential Equations with Air Resistance</a>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#3-range-analysis-based-on-angle">3. Range Analysis Based on Angle</a>
+<li class="toctree-l3"><a class="reference internal" href="#3-analytical-solution-with-air-resistance">3. Analytical Solution with Air Resistance</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#horizontal-position">Horizontal position:</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#vertical-position">Vertical position:</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#trajectory-equation-y-as-function-of-x">Trajectory Equation (y as function of x)</a>
+</li>
+</ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#4-python-code-for-simulation">4. Python code for simulation</a>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#_1"></a>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#5-brief-description-how-this-code-works">5. Brief description, how this code works</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#1function-calculate_trajectory">1.Function calculate_trajectory:</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#2user-input">2.User Input:</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#3plotting">3.Plotting:</a>
+</li>
+</ul>
 </li>
 </ul>
 </li>
@@ -209,104 +225,146 @@ y = v_0 \sin(\theta) t - \frac{1}{2} g t^2
 \]</div>
 <p>where:
 - <span class="arithmatex">\(g\)</span> is the acceleration due to gravity (typically <span class="arithmatex">\(9.81 \text{ m/s}^2\)</span>).</p>
+<p>and therefore our graph will be parabola and look like this:
+<img alt="alt text" src="../image-1.png"/></p>
 <hr/>
-<h2 id="2-range-of-flight-r">2. Range of Flight (R)</h2>
-<p>The range is the horizontal distance traveled by the projectile before it lands.</p>
-<p>To find the range, we first determine the flight time (T), which is the time it takes for the projectile to return to the ground (<span class="arithmatex">\(y = 0\)</span>):
+<h2 id="2-differential-equations-with-air-resistance">2. Differential Equations with Air Resistance</h2>
+<p><strong>Modified equations (b = 0.1):</strong>
+When air resistance (drag force proportional to velocity) is included:</p>
+<p><strong>Modified equations (b = 0.1):</strong>
 $$
-T = \frac{2 v_0 \sin(\theta)}{g}
+m{x}'' = -b{x}' \
+m{y}'' = -mg - b{y}'
 $$</p>
-<p>Now, substituting <span class="arithmatex">\(T\)</span> into the equation for <span class="arithmatex">\(x\)</span>:
+<p><strong>First-order system:</strong>
+1. Horizontal:
 $$
-R = v_0 \cos(\theta) \cdot \frac{2 v_0 \sin(\theta)}{g}
+{x}' = v_x \
+{v}_x' = {x}'' = -\frac{b}{m}v_x
 $$</p>
-<p>Using the trigonometric identity <span class="arithmatex">\(2 \sin(\theta) \cos(\theta) = \sin(2\theta)\)</span>, we get:
+<ol>
+<li>Vertical:
 $$
-R = \frac{v_0^2 \sin(2\theta)}{g}
-$$</p>
+{y}' = v_y \
+{v}_y' = {y}'' = -g - \frac{b}{m}v_y
+$$</li>
+</ol>
 <hr/>
-<h2 id="3-range-analysis-based-on-angle">3. Range Analysis Based on Angle</h2>
-<p>From the equation, we observe:</p>
+<h2 id="3-analytical-solution-with-air-resistance">3. Analytical Solution with Air Resistance</h2>
+<p>When air resistance is considered, the equations of motion become more complex. The drag force opposes the motion and is typically proportional to the velocity (for low speeds). The analytical solutions for horizontal x(t) and vertical y(t) positions are:</p>
+<h3 id="horizontal-position">Horizontal position:</h3>
+<div class="arithmatex">\[
+x(t) = \frac{v_x0} m b \left(1 - e^{-\frac{b}{m} t}\right)
+\]</div>
+<p>where:
+- <span class="arithmatex">\(v_{x0} = v_0 \cos(\theta)\)</span> is the initial horizontal velocity,
+- <span class="arithmatex">\(b\)</span> is the drag coefficient,
+- <span class="arithmatex">\(m\)</span> is the mass of the projectile.</p>
+<h3 id="vertical-position">Vertical position:</h3>
+<div class="arithmatex">\[
+y(t) = \left(\frac{v_{y0} m}{b} + \frac{m^2 g}{b^2}\right) \left(1 - e^{-\frac{b}{m} t}\right) - \frac{mg}{b} t
+\]</div>
+<p>where:
+- <span class="arithmatex">\(v_{y0} = v_0 \sin(\theta)\)</span> is the initial vertical velocity.</p>
 <ul>
-<li>Maximum range is achieved at <span class="arithmatex">\(\theta = 45^\circ\)</span>, since <span class="arithmatex">\(\sin(2\theta) = 1\)</span>.</li>
-<li>If the angle is too small (<span class="arithmatex">\(\theta \approx 0^\circ\)</span>), the projectile moves almost straight and falls nearby.</li>
-<li>If the angle is too large (<span class="arithmatex">\(\theta \approx 90^\circ\)</span>), the projectile moves mostly upward and lands almost at the launch point.</li>
+<li>The horizontal motion is no longer linear due to the exponential decay term.</li>
+<li>The vertical motion includes a terminal velocity term (<span class="arithmatex">\(\frac{mg}{b}\)</span>) as <span class="arithmatex">\(t \to \infty\)</span>.</li>
 </ul>
-<hr/>
+<h3 id="trajectory-equation-y-as-function-of-x">Trajectory Equation (y as function of x)</h3>
+<p>By solving the x(t) equation for t and substituting into y(t), we get the trajectory equation:
+$$ y(x) = \left(\frac{mg}{b v_{0x}} + \frac{v_{0y}}{v_{0x}}\right)x + \frac{m^2g}{b^2}\ln\left(1 - \frac{b x}{m v_{0x}}\right) $$</p>
+<p>and now, with air resistance, our graph will look like this:
+<img alt="alt text" src="../image-2.png"/></p>
 <h2 id="4-python-code-for-simulation">4. Python code for simulation</h2>
 <p>Also, to better understand projectile motion, I wrote a Python script that simulates and visualizes the trajectory of our projectile. The script plots the parabolic path of a projectile based on different launch angles and initial velocities, which you can write by yourself. It uses the <code>matplotlib</code> and <code>numpy</code> libraries to generate the graphs. Here is the code:</p>
-<pre><code>    import numpy as np
-    import matplotlib.pyplot as plt
+<pre><code>import numpy as np
+import matplotlib.pyplot as plt
 
-    def draw_trajectories(angles, initial_velocity, g):
-        plt.figure(figsize=(10, 5))
+def calculate_trajectory(v0, angle, g=9.81, b=0.1, with_air=False):
+    angle_rad = np.radians(angle)
 
-        for angle in angles:
-            angle_rad = np.radians(angle)
-            time_of_flight = (2 * (initial_velocity * np.sin(angle_rad))) / g
-            t = np.linspace(0, time_of_flight, num=500)
+    if not with_air:
+        t_flight = 2 * v0 * np.sin(angle_rad) / g
+        t = np.linspace(0, t_flight, 100)
+        x = v0 * np.cos(angle_rad) * t
+        y = v0 * np.sin(angle_rad) * t - 0.5 * g * t**2
+    else:
+        def y_func(t):
+            return (v0*np.sin(angle_rad) + g/b)*(1-np.exp(-b*t))/b - g*t/b
 
-            x = initial_velocity * np.cos(angle_rad) * t
-            y = initial_velocity * np.sin(angle_rad) * t - 0.5 * g * t**2
+        t_flight = 0
+        dt = 0.01
+        while y_func(t_flight) &gt;= 0:
+            t_flight += dt
 
-            plt.plot(x, y, label=f'Angle: {angle}°')
+        t = np.linspace(0, t_flight, 100)
+        x = (v0 * np.cos(angle_rad) * (1 - np.exp(-b*t))) / b
+        y = y_func(t)
 
-        plt.title(f'Projectile Trajectories (Initial Velocity: {initial_velocity} m/s)')
-        plt.xlabel('Distance (m)')
-        plt.ylabel('Height (m)')
-        plt.legend()
-        plt.grid(True)
-        plt.show()
+    return x, y
 
-    g = 9.81
+v0 = float(input("Enter initial velocity (m/s): "))
+angles = list(map(float, input("Enter angles (degrees, space-separated): ").split()))
 
-    initial_velocity = int(input("Enter initial velocity (in m/s): "))
-    angles = list(map(float, input("Enter angles separated by spaces (in degrees): ").split()))
+plt.figure(figsize=(10, 6))
+for angle in angles:
+    x, y = calculate_trajectory(v0, angle, with_air=False)
+    plt.plot(x, y, label=f'{angle}° (no air)')
 
-    draw_trajectories(angles, initial_velocity, g)
+    x_air, y_air = calculate_trajectory(v0, angle, with_air=True)
+    plt.plot(x_air, y_air, '--', label=f'{angle}° (with air)')
+
+plt.title(f'Projectile Trajectories (v0 = {v0} m/s)')
+plt.xlabel('Distance (m)')
+plt.ylabel('Height (m)')
+plt.axhline(0, color='black', linestyle='-', linewidth=0.5) 
+plt.legend()
+plt.grid(True)
+plt.show()
 </code></pre>
 <ul>
-<li>This code creates a graph that shows the trajectory of a projectile, when launched from different angles and with different initial speeds, you can enter these values ​​yourself. Also on this graph are 2 axes, distance and height, which show us exactly how high and far the projectile flew, here is the graph:</li>
+<li>This code creates a graph that shows the trajectory of a projectile, with and without air resistance, when launched from different angles and with different initial speeds, you can enter these values ​​yourself. Also on this graph are 2 axes, distance and height, which show us exactly how high and far the projectile flew, here is the graph:</li>
 </ul>
-<h2 id="_1"><img alt="alt text" src="../image.png"/></h2>
+<h2 id="_1"><img alt="alt text" src="../image-3.png"/></h2>
 <h2 id="5-brief-description-how-this-code-works">5. Brief description, how this code works</h2>
-<ol>
+<p>This code simulates and plots projectile trajectories with and without air resistance. Here's a brief breakdown:</p>
+<h3 id="1function-calculate_trajectory">1.Function calculate_trajectory:</h3>
+<ul>
 <li>
-<p>plt.figure(figsize=(10, 5)): Creates a figure with a specified size (10x5 inches).</p>
+<p>Computes the x (horizontal) and y (vertical) positions of a projectile over time.</p>
 </li>
 <li>
-<p>angle_rad = np.radians(angle): Converts the angle from degrees to radians.</p>
+<p>Without air resistance: Uses basic kinematic equations for projectile motion.</p>
 </li>
 <li>
-<p>time_of_flight = (2 * (initial_velocity * np.sin(angle_rad))) / g: Calculates the total flight time of the projectile.</p>
+<p>With air resistance: Uses more complex equations accounting for drag (exponential decay terms).</p>
 </li>
 <li>
-<p>t = np.linspace(0, time_of_flight, num=500): Generates 500 time points between 0 and time_of_flight.</p>
+<p>Determines flight time differently for each case.</p>
+</li>
+</ul>
+<h3 id="2user-input">2.User Input:</h3>
+<ul>
+<li>Takes initial velocity (v0) and multiple launch angles as input.</li>
+</ul>
+<h3 id="3plotting">3.Plotting:</h3>
+<ul>
+<li>
+<p>For each angle, calculates and plots two trajectories:</p>
+<ul>
+<li>
+<p>Solid line: No air resistance (ideal case)</p>
 </li>
 <li>
-<p>x = initial_velocity * np.cos(angle_rad) * t: Computes horizontal positions (distance).</p>
-<p>y = initial_velocity * np.sin(angle_rad) * t - 0.5 * g * t**2: Computes vertical positions (height).</p>
+<p>Dashed line: With air resistance (more realistic)</p>
+</li>
+</ul>
 </li>
 <li>
-<p>plt.plot(x, y, label=f'Angle: {angle}°'): Plots the trajectory and adds a label.</p>
+<p>Adds labels, grid, and other plot decorations.</p>
 </li>
-<li>
-<p>plt.title(...), plt.xlabel(...), plt.ylabel(...): Sets the title and axis labels.</p>
-</li>
-<li>
-<p>plt.show(): Displays the plot.</p>
-</li>
-<li>
-<p>g = 9.81: Sets gravitational acceleration (9.81 m/s²).</p>
-</li>
-<li>
-<p>initial_velocity = int(input(...)): Takes user input of initial velocoty</p>
-<p>angles = list(map(float, input(...).split())): Takes user input of angles</p>
-</li>
-<li>
-<p>draw_trajectories(angles, initial_velocity, g): Calls the function to draw trajectories.</p>
-</li>
-</ol>
+</ul>
+<p>The key difference is that air resistance reduces the projectile's range and height, which is clearly visible in the plotted trajectories. The code allows comparison between ideal and air-resistant motion for multiple angles simultaneously.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
