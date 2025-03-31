@@ -226,4 +226,6 @@ This code simulates and plots projectile trajectories with and without air resis
 The key difference is that air resistance reduces the projectile's range and height, which is clearly visible in the plotted trajectories. The code allows comparison between ideal and air-resistant motion for multiple angles simultaneously.
 
 
-## Google Colab Link (with Python code): https://colab.research.google.com/drive/1ZFv3n-_qu1Iq8BA62Z_PlupG6cccJkd3?usp=sharing
+## Google Colab Link (with Python code):
+
+[MyColab](https://colab.research.google.com/drive/1ZFv3n-_qu1Iq8BA62Z_PlupG6cccJkd3?usp=sharing)
