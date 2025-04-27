@@ -1,4 +1,5 @@
 # Investigating the Dynamics of a Forced Damped Pendulum
+
 <img src="pendulum.gif" alt="описание" width="300" height="300">
 
 # 1. Theoretical Foundation
