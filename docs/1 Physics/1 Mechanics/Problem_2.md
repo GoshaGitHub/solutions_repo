@@ -205,5 +205,8 @@ plot_simulation(b=0.2, A=1.5, omega_drive=2/3, title='Forced Damped Pendulum - S
 - Systematic graphical placeholders
 - Full working Python code
 - Real-world application discussion
-- Preparation for detailed plotting: phase portraits, Poincaré sections, bifurcation diagrams
+- Preparation for detailed plotting: phase portraits, Poincaré sections
 
+## Google Colab Link (with Python code):
+
+[MyColab](https://colab.research.google.com/drive/1ZE78wAikuWhAfmovX2oA5vgifubjAmRs)
