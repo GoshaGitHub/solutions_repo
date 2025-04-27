@@ -1,6 +1,6 @@
 # Investigating the Dynamics of a Forced Damped Pendulum
 
-<img src="pendulum.gif" alt="описание" width="300" height="300">
+![alt text](pendulum.gif)
 
 # 1. Theoretical Foundation
 
@@ -94,7 +94,7 @@ The forced damped pendulum model applies to:
 
 Here is an very simple example of real-world forced damped pendulum:
 
-<img src="swing.gif" alt="описание" width="300" height="300">
+![alt text](swing.gif)
 
 ---
 
