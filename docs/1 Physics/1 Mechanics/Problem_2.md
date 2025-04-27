@@ -1,4 +1,5 @@
 # Investigating the Dynamics of a Forced Damped Pendulum
+<img src="pendulum.gif" alt="описание" width="300" height="300">
 
 # 1. Theoretical Foundation
 
@@ -17,7 +18,7 @@ where:
 - $\omega_{\text{drive}}$ is the driving frequency.
 
 ---
-![alt text](pendulum.gif)
+
 ## Small-Angle Approximation
 
 For small oscillations ($\theta \approx \sin\theta$), the equation simplifies to:
@@ -26,9 +27,6 @@ $$
 \frac{d^2\theta}{dt^2} + b\frac{d\theta}{dt} + \omega_0^2 \theta = A\cos(\omega_{\text{drive}} t)
 $$
 
-$$
-\frac{d^2\theta}{dt^2} + b\frac{d\theta}{dt} + \omega_0^2 \theta = A\cos(\omega_{\text{drive}} t)
-$$
 
 This is now a **linear** second-order differential equation.
 
@@ -48,8 +46,6 @@ $$
 \theta_0 = \frac{A}{\sqrt{(\omega_0^2 - \omega_{\text{drive}}^2)^2 + (b\omega_{\text{drive}})^2}}
 $$
 
-[Insert here: Graph of amplitude $\theta_0$ vs driving frequency $\omega_{\text{drive}}$ showing resonance peak]
-
 ---
 
 ## Resonance Condition
@@ -62,8 +58,6 @@ $$
 
 At resonance, small driving forces produce large oscillations.
 
-[Insert here: Schematic diagram illustrating resonance with energy absorption]
-
 ---
 
 # 2. Analysis of Dynamics
@@ -74,8 +68,6 @@ At resonance, small driving forces produce large oscillations.
 - **Driving amplitude $A$** increases overall energy input.
 - **Driving frequency $\omega_{\text{drive}}$** controls resonance, synchronization, or chaos.
 
-[Insert here: Comparative plots of pendulum motion with different damping coefficients]
-
 ---
 
 ## Transition to Chaos
@@ -85,10 +77,9 @@ At resonance, small driving forces produce large oscillations.
   - Extreme sensitivity to initial conditions,
   - Complex strange attractors.
 
-[Insert here: Plot showing transition from regular to chaotic motion as A increases]
+Here is the plot showing transition from regular to chaotic motion as A increases:
 
-[Insert here: Poincaré section showing scattered points for chaotic pendulum]
-
+![alt text](image-6.png)
 ---
 
 # 3. Practical Applications
@@ -100,7 +91,9 @@ The forced damped pendulum model applies to:
 - **Oscillating circuits** (driven RLC circuits in electronics),
 - **Biomechanics** (leg dynamics during walking/running).
 
-[Insert here: Image or schematic of real-world forced oscillatory systems like a bridge or RLC circuit]
+Here is an very simple example of real-world forced damped pendulum:
+
+<img src="swing.gif" alt="описание" width="300" height="300">
 
 ---
 
@@ -124,25 +117,19 @@ $$
 
 ### Simple Pendulum (No Damping, No Forcing)
 
-[Insert here: Time series plot of simple pendulum]
-
-[Insert here: Phase portrait (ellipse) of simple pendulum]
+![alt text](image-7.png)
 
 ---
 
 ### Damped Pendulum (Damping, No Forcing)
 
-[Insert here: Time series plot showing decaying oscillations]
-
-[Insert here: Spiral phase portrait showing decay to rest]
+![alt text](image-8.png)
 
 ---
 
 ### Forced Pendulum (Forcing, No Damping)
 
-[Insert here: Time series plot showing large oscillations]
-
-[Insert here: Phase portrait with limit cycles]
+![alt text](image-9.png)
 
 ---
 
@@ -150,15 +137,12 @@ $$
 
 **Scenario 1:** Moderate damping and forcing
 
-[Insert here: Time series showing irregular oscillations]
+![alt text](image-10.png)
 
-[Insert here: Phase portrait showing chaotic attractor]
-
+---
 **Scenario 2:** Strong forcing (possible resonance/chaos)
 
-[Insert here: Poincaré section with scattered points]
-
-[Insert here: Bifurcation diagram as A is varied]
+![alt text](image-11.png)
 
 ---
 
