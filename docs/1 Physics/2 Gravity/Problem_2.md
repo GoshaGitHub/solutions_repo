@@ -83,9 +83,9 @@ Also here is the escape trajectory from solar orbit:
 
 | Quantity | Value |
 |:---------|:------|
-| Mass $ M_{\text{Earth}} $ | $ 5.972 \times 10^{24} \, \text{kg} $ |
-| Radius $ R_{\text{Earth}} $ | $ 6.371 \times 10^6 \, \text{m} $ |
-| Gravitational Constant $ G $ | $ 6.67430 \times 10^{-11} \, \text{m}^3 \text{kg}^{-1} \text{s}^{-2} $ |
+| Mass $M_{\text{Earth}}$ | $5.972 \times 10^{24} \, \text{kg}$ |
+| Radius $R_{\text{Earth}}$ | $6.371 \times 10^6 \, \text{m}$ |
+| Gravitational Constant $G$ | $6.67430 \times 10^{-11} \, \text{m}^3 \text{kg}^{-1} \text{s}^{-2}$ |
 
 Calculating:
 
