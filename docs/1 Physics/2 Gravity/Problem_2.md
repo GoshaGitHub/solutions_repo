@@ -28,7 +28,7 @@ where:
 - $ R $ = radius of the planet
 - $ v_1 $ = first cosmic velocity
 
-Solving for $ v_1 $:
+Solving for $v_1$:
 
 $$ v_1 = \sqrt{\frac{G M}{R}} $$
 
@@ -43,7 +43,7 @@ The object needs kinetic energy to match the gravitational potential energy:
 
 $$ \frac{1}{2} m v_2^2 = \frac{G M m}{R} $$
 
-Solving for $ v_2 $:
+Solving for $v_2$:
 
 $$ v_2 = \sqrt{\frac{2 G M}{R}} $$
 
@@ -68,8 +68,8 @@ Approximate derivation:
 $$ v_3 \approx \sqrt{v_{e,Sun}^2 - v_{orb,Earth}^2} $$
 
 where:
-- $ v_{e,Sun} $ = escape velocity from Sun at Earth's orbit
-- $ v_{orb,Earth} $ = Earth's orbital speed around the Sun
+- $v_{e,Sun}$ = escape velocity from Sun at Earth's orbit
+- $v_{orb,Earth}$ = Earth's orbital speed around the Sun
 
 **More precisely:**  
 Since Earth moves around the Sun, the spacecraft needs to cancel Earth’s orbital motion and then escape.
@@ -98,7 +98,7 @@ $$ v_3 \approx 16.7 \, \text{km/s} $$
 
 ## Visual/Data Comparison: Earth vs Moon, Mars, Jupiter
 
-| Celestial Body | $ v_1 $ (km/s) | $ v_2 $ (km/s) | $ v_3 $ (km/s) (approximate) |
+| Celestial Body | $v_1$ (km/s) | $v_2$ (km/s) | $v_3$ (km/s) (approximate) |
 |:---------------|:---------------:|:---------------:|:-----------------------------:|
 | **Earth**       | 7.9             | 11.2            | 16.7                         |
 | **Moon**        | 1.68            | 2.38            | - (Moon orbiting Earth)       |
