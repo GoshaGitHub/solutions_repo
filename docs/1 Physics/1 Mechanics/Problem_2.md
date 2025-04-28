@@ -2,7 +2,7 @@
 
 ![alt text](pendulum.gif)
 
-# 1. Theoretical Foundation
+## 1. Theoretical Foundation
 
 We start from the general second-order differential equation for a forced damped pendulum:
 
@@ -20,7 +20,7 @@ where:
 
 ---
 
-## Small-Angle Approximation
+### Small-Angle Approximation
 
 For small oscillations ($\theta \approx \sin\theta$), the equation simplifies to:
 
@@ -33,7 +33,7 @@ This is now a **linear** second-order differential equation.
 
 ---
 
-## Approximate Solution for Small Oscillations
+### Approximate Solution for Small Oscillations
 
 In steady state:
 
@@ -49,7 +49,7 @@ $$
 
 ---
 
-## Resonance Condition
+### Resonance Condition
 
 Resonance occurs at:
 
@@ -61,9 +61,9 @@ At resonance, small driving forces produce large oscillations.
 
 ---
 
-# 2. Analysis of Dynamics
+## 2. Analysis of Dynamics
 
-## Influence of Parameters
+### Influence of Parameters
 
 - **Damping $b$** reduces oscillation amplitudes and flattens resonance curves.
 - **Driving amplitude $A$** increases overall energy input.
@@ -71,7 +71,7 @@ At resonance, small driving forces produce large oscillations.
 
 ---
 
-## Transition to Chaos
+### Transition to Chaos
 
 - For strong forcing and nonlinearity, pendulum exhibits **chaotic behavior**:
   - No periodicity,
@@ -83,7 +83,7 @@ Here is the plot showing transition from regular to chaotic motion as A increase
 ![alt text](image-6.png)
 ---
 
-# 3. Practical Applications
+## 3. Practical Applications
 
 The forced damped pendulum model applies to:
 
@@ -98,7 +98,7 @@ Here is an very simple example of real-world forced damped pendulum:
 
 ---
 
-# 4. Implementation
+## 4. Implementation
 
 We simulate the forced damped pendulum numerically (using **Runge-Kutta** method).
 
@@ -114,7 +114,7 @@ $$
 
 ---
 
-## Simulations and Visualizations
+## 5. Simulations and Visualizations
 
 ### Simple Pendulum (No Damping, No Forcing)
 
