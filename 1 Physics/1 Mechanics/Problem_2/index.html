@@ -50,13 +50,51 @@
 </li>
 <li class="toctree-l2 current"><a class="reference internal current" href="#">Investigating the Dynamics of a Forced Damped Pendulum</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#1-theoretical-foundation">1. Theoretical Foundation</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#small-angle-approximation">Small-Angle Approximation</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#approximate-solution-for-small-oscillations">Approximate Solution for Small Oscillations</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#resonance-condition">Resonance Condition</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#2-analysis-of-dynamics">2. Analysis of Dynamics</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#influence-of-parameters">Influence of Parameters</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#transition-to-chaos">Transition to Chaos</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#_1"></a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#3-practical-applications">3. Practical Applications</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#4-implementation">4. Implementation</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#5-simulations-and-visualizations">5. Simulations and Visualizations</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#simple-pendulum-no-damping-no-forcing">Simple Pendulum (No Damping, No Forcing)</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#damped-pendulum-damping-no-forcing">Damped Pendulum (Damping, No Forcing)</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#forced-pendulum-forcing-no-damping">Forced Pendulum (Forcing, No Damping)</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#forced-damped-pendulum-chaos-examples">Forced Damped Pendulum (Chaos Examples)</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#python-code-for-simulations">Python Code for Simulations</a>
+</li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal">2 Gravity</a>
 <ul>
-<li class="toctree-l2"><a class="reference internal" href="../../2%20Gravity/Problem_1/">Problem 1</a>
+<li class="toctree-l2"><a class="reference internal" href="../../2%20Gravity/Problem_1/">Gravity</a>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../2%20Gravity/Problem_2/">Problem 2</a>
 </li>
@@ -173,7 +211,7 @@
 <div class="section" itemprop="articleBody">
 <h1 id="investigating-the-dynamics-of-a-forced-damped-pendulum">Investigating the Dynamics of a Forced Damped Pendulum</h1>
 <p><img alt="alt text" src="../pendulum.gif"/></p>
-<h1 id="1-theoretical-foundation">1. Theoretical Foundation</h1>
+<h2 id="1-theoretical-foundation">1. Theoretical Foundation</h2>
 <p>We start from the general second-order differential equation for a forced damped pendulum:</p>
 <div class="arithmatex">\[
 \frac{d^2\theta}{dt^2} + b\frac{d\theta}{dt} + \omega_0^2 \sin(\theta) = A\cos(\omega_{\text{drive}} t)
@@ -187,14 +225,14 @@
 <li><span class="arithmatex">\(\omega_{\text{drive}}\)</span> is the driving frequency.</li>
 </ul>
 <hr/>
-<h2 id="small-angle-approximation">Small-Angle Approximation</h2>
+<h3 id="small-angle-approximation">Small-Angle Approximation</h3>
 <p>For small oscillations (<span class="arithmatex">\(\theta \approx \sin\theta\)</span>), the equation simplifies to:</p>
 <div class="arithmatex">\[
 \frac{d^2\theta}{dt^2} + b\frac{d\theta}{dt} + \omega_0^2 \theta = A\cos(\omega_{\text{drive}} t)
 \]</div>
 <p>This is now a <strong>linear</strong> second-order differential equation.</p>
 <hr/>
-<h2 id="approximate-solution-for-small-oscillations">Approximate Solution for Small Oscillations</h2>
+<h3 id="approximate-solution-for-small-oscillations">Approximate Solution for Small Oscillations</h3>
 <p>In steady state:</p>
 <div class="arithmatex">\[
 \theta(t) = \theta_0 \cos(\omega_{\text{drive}} t - \delta)
@@ -204,22 +242,22 @@
 \theta_0 = \frac{A}{\sqrt{(\omega_0^2 - \omega_{\text{drive}}^2)^2 + (b\omega_{\text{drive}})^2}}
 \]</div>
 <hr/>
-<h2 id="resonance-condition">Resonance Condition</h2>
+<h3 id="resonance-condition">Resonance Condition</h3>
 <p>Resonance occurs at:</p>
 <div class="arithmatex">\[
 \omega_{\text{drive}} \approx \sqrt{\omega_0^2 - \frac{b^2}{2}}
 \]</div>
 <p>At resonance, small driving forces produce large oscillations.</p>
 <hr/>
-<h1 id="2-analysis-of-dynamics">2. Analysis of Dynamics</h1>
-<h2 id="influence-of-parameters">Influence of Parameters</h2>
+<h2 id="2-analysis-of-dynamics">2. Analysis of Dynamics</h2>
+<h3 id="influence-of-parameters">Influence of Parameters</h3>
 <ul>
 <li><strong>Damping <span class="arithmatex">\(b\)</span></strong> reduces oscillation amplitudes and flattens resonance curves.</li>
 <li><strong>Driving amplitude <span class="arithmatex">\(A\)</span></strong> increases overall energy input.</li>
 <li><strong>Driving frequency <span class="arithmatex">\(\omega_{\text{drive}}\)</span></strong> controls resonance, synchronization, or chaos.</li>
 </ul>
 <hr/>
-<h2 id="transition-to-chaos">Transition to Chaos</h2>
+<h3 id="transition-to-chaos">Transition to Chaos</h3>
 <ul>
 <li>For strong forcing and nonlinearity, pendulum exhibits <strong>chaotic behavior</strong>:</li>
 <li>No periodicity,</li>
@@ -228,7 +266,7 @@
 </ul>
 <p>Here is the plot showing transition from regular to chaotic motion as A increases:</p>
 <h2 id="_1"><img alt="alt text" src="../image-6.png"/></h2>
-<h1 id="3-practical-applications">3. Practical Applications</h1>
+<h2 id="3-practical-applications">3. Practical Applications</h2>
 <p>The forced damped pendulum model applies to:</p>
 <ul>
 <li><strong>Energy harvesting</strong> (vibration-based generators),</li>
@@ -239,7 +277,7 @@
 <p>Here is an very simple example of real-world forced damped pendulum:</p>
 <p><img alt="alt text" src="../swing.gif"/></p>
 <hr/>
-<h1 id="4-implementation">4. Implementation</h1>
+<h2 id="4-implementation">4. Implementation</h2>
 <p>We simulate the forced damped pendulum numerically (using <strong>Runge-Kutta</strong> method).</p>
 <p>The equations:</p>
 <div class="arithmatex">\[
@@ -249,7 +287,7 @@
 \frac{d\omega}{dt} = -b\omega - \omega_0^2 \sin(\theta) + A\cos(\omega_{\text{drive}}t)
 \]</div>
 <hr/>
-<h2 id="simulations-and-visualizations">Simulations and Visualizations</h2>
+<h2 id="5-simulations-and-visualizations">5. Simulations and Visualizations</h2>
 <h3 id="simple-pendulum-no-damping-no-forcing">Simple Pendulum (No Damping, No Forcing)</h3>
 <p><img alt="alt text" src="../image-7.png"/></p>
 <hr/>
@@ -329,7 +367,7 @@ plot_simulation(b=0.2, A=1.5, omega_drive=2/3, title='Forced Damped Pendulum - S
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
 <a class="btn btn-neutral float-left" href="../Problem_1/" title="Theoretical Basis: Projectile Motion"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-<a class="btn btn-neutral float-right" href="../../2%20Gravity/Problem_1/" title="Problem 1">Next <span class="icon icon-circle-arrow-right"></span></a>
+<a class="btn btn-neutral float-right" href="../../2%20Gravity/Problem_1/" title="Gravity">Next <span class="icon icon-circle-arrow-right"></span></a>
 </div>
 <hr/>
 <div role="contentinfo">
