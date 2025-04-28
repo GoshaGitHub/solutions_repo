@@ -22,6 +22,7 @@ An object in a circular orbit experiences gravitational force as the centripetal
 $$ \frac{G M m}{R^2} = \frac{m v_1^2}{R} $$
 
 where:
+
 - $G$ gravitational constant,
 - $M$ mass of the planet,
 - $m$ mass of the object,
