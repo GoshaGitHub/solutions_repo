@@ -22,11 +22,11 @@ An object in a circular orbit experiences gravitational force as the centripetal
 $$ \frac{G M m}{R^2} = \frac{m v_1^2}{R} $$
 
 where:
-- $ G $ = gravitational constant
-- $ M $ = mass of the planet
-- $ m $ = mass of the object
-- $ R $ = radius of the planet
-- $ v_1 $ = first cosmic velocity
+- $G$ = gravitational constant
+- $M$ = mass of the planet
+- $m$ = mass of the object
+- $R$ = radius of the planet
+- $v_1$ = first cosmic velocity
 
 Solving for $v_1$:
 
