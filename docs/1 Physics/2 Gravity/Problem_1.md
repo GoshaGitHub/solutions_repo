@@ -177,4 +177,4 @@ $T^2 = \frac{4\pi^2}{GM} a^3$
 ---
 ## Google Colab Link (with Python code):
 
-[MyColab](https://colab.research.google.com/drive/1ZFv3n-_qu1Iq8BA62Z_PlupG6cccJkd3?usp=sharing)
+[MyColab](https://colab.research.google.com/drive/1nxY-EsikhIzR8trIpHQmCeOzOjeTJ5Qk)
