@@ -17,8 +17,8 @@ $F_{\text{gravity}} = F_{\text{centripetal}}$
 $\frac{GMm}{r^2} = \frac{mv^2}{r}$
 
 Where:  
-- $G$ is the gravitational constant,  
-- $M$ is the mass of the central body (e.g., the Sun),  
+- $G$ is the gravitational constant 
+- $M$ is the mass of the central body (e.g., the Sun),
 - $m$ is the mass of the orbiting object (e.g., a planet),  
 - $r$ is the orbital radius,  
 - $v$ is the orbital speed.
