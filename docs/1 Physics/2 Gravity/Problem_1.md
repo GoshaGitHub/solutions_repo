@@ -1,4 +1,4 @@
-1️⃣
+# 1️⃣
 # Gravity  
 # Orbital Period and Orbital Radius
 ![alt text](sun.gif)

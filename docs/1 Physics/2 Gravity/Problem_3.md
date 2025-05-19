@@ -1,4 +1,4 @@
-3️
+# 3️
 # Trajectories of a Freely Released Payload Near Earth
 
 ## 1. Objective

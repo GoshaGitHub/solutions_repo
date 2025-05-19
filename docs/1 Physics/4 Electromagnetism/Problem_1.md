@@ -1,4 +1,4 @@
-1️⃣
+# 1️⃣
 # Electromagnetism Lorentz Force Simulation
 
 ## 1. Exploration of Applications
