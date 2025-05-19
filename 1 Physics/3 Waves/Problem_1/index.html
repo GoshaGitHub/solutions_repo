@@ -76,15 +76,11 @@
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#4-interpretation">4. Interpretation</a>
 </li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#_1"></a>
-<ul>
 <li class="toctree-l4"><a class="reference internal" href="#5-python-simulation-code">5. Python Simulation Code</a>
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#_2"></a>
+<li class="toctree-l3"><a class="reference internal" href="#_1"></a>
 <ul>
 <li class="toctree-l4"><a class="reference internal" href="#6-deliverables">6. Deliverables</a>
 </li>
@@ -241,13 +237,16 @@ The total displacement is the sum:</li>
 <p>$$
 z(x, y, t) = \sum_{i=1}^{N} z_i(x, y, t)
 $$
-<img alt="alt text" src="../image.png"/></p>
+<img alt="alt text" src="../image.png"/>
+<img alt="alt text" src="../two_sources_heatmap.png"/></p>
 <hr/>
 <h3 id="4-interpretation">4. Interpretation</h3>
 <p><strong>Constructive Interference</strong>: Where waves from sources arrive in-phase — peaks reinforce each other.<br/>
 <strong>Destructive Interference</strong>: Where waves arrive out-of-phase — peaks cancel troughs.</p>
 <p>By placing sources at polygon vertices, symmetrical interference patterns emerge, showing how spatial wave arrangements shape the resulting surface.</p>
-<h2 id="_1"><img alt="alt text" src="../image-1.png"/></h2>
+<p><img alt="alt text" src="../image-1.png"/>
+<img alt="alt text" src="../two_sources_3d_surface.png"/></p>
+<hr/>
 <h3 id="5-python-simulation-code">5. Python Simulation Code</h3>
 <pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
@@ -314,7 +313,7 @@ def animate(i):
 ani = animation.FuncAnimation(fig, animate, frames=40, interval=100)
 ani.save('wave_interference.gif', writer='pillow')
 </code></pre>
-<h2 id="_2"><img alt="alt text" src="../wave_interference.gif"/></h2>
+<h2 id="_1"><img alt="alt text" src="../wave_interference.gif"/></h2>
 <h3 id="6-deliverables">6. Deliverables</h3>
 <ul>
 <li>Code simulating interference from polygon-placed wave sources  </li>
