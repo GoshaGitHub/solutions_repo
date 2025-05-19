@@ -95,7 +95,7 @@ plt.show()
 * **Around 7.8 km/s**: Circular or low Earth orbits (LEO).
 * **Between 8–11.2 km/s**: Elliptical or escape trajectories.
 * **> 11.2 km/s**: Hyperbolic escape — the payload leaves Earth's gravitational field.
-![alt text](image-12.png)
+![alt text](image-13.png)
 ---
 
 ## 6.  Real-World Applications

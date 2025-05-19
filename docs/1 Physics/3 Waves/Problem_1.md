@@ -49,6 +49,7 @@ $$
 z(x, y, t) = \sum_{i=1}^{N} z_i(x, y, t)
 $$
 ![alt text](image.png)
+![alt text](two_sources_heatmap.png)
 ---
 
 ### 4. Interpretation
@@ -59,6 +60,7 @@ $$
 By placing sources at polygon vertices, symmetrical interference patterns emerge, showing how spatial wave arrangements shape the resulting surface.
 
 ![alt text](image-1.png)
+![alt text](two_sources_3d_surface.png)
 ---
 
 ### 5. Python Simulation Code
