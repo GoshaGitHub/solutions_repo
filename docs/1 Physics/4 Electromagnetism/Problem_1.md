@@ -126,11 +126,4 @@ plt.show()
 
 ---
 
-## 🧐 Extensions
-
-* Add non-uniform or time-varying fields.
-* Use Runge-Kutta method for better precision.
-* Add collisions (e.g., plasma modeling).
-* Explore relativistic effects at high velocities.
-
 [MyColab](https://colab.research.google.com/drive/1mKzx5NRdaniyCGZngB0npskZLA5BKDbT)
