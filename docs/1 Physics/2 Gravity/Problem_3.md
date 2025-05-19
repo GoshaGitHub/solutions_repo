@@ -32,7 +32,6 @@ Where:
 * **Initial Velocities**: from **5 km/s to 13 km/s** in steps of 0.5 km/s
 * **Initial Position**: on the right side of Earth (positive x-axis)
 * **Initial Velocity Direction**: purely tangential (positive y-direction)
-![alt text](image-11.png)
 ---
 
 ## 4.  Python Simulation Code
