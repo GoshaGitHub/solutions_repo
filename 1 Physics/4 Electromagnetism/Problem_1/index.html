@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 1 - Physics and Mathematics</title>
+<title>Electromagnetism Lorentz Force Simulation - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 1";
+        var mkdocs_page_name = "Electromagnetism Lorentz Force Simulation";
         var mkdocs_page_input_path = "1 Physics/4 Electromagnetism/Problem_1.md";
         var mkdocs_page_url = null;
       </script>
@@ -70,8 +70,28 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal current">4 Electromagnetism</a>
 <ul class="current">
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">Electromagnetism Lorentz Force Simulation</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#1-exploration-of-applications">1. Exploration of Applications</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#2-simulating-particle-motion">2. Simulating Particle Motion</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#scenarios">Scenarios:</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#3-parameter-exploration">3. Parameter Exploration</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#4-visualization">4. Visualization</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#_1"></a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#python-simulation-code">Python Simulation Code</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#discussion">🔍 Discussion</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#extensions">🧐 Extensions</a>
+</li>
 </ul>
 </li>
 </ul>
@@ -163,7 +183,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">1 Physics</li>
 <li class="breadcrumb-item">4 Electromagnetism</li>
-<li class="breadcrumb-item active">Problem 1</li>
+<li class="breadcrumb-item active">Electromagnetism Lorentz Force Simulation</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -171,7 +191,125 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-1">Problem 1</h1>
+<h1 id="electromagnetism-lorentz-force-simulation">Electromagnetism Lorentz Force Simulation</h1>
+<h2 id="1-exploration-of-applications">1. Exploration of Applications</h2>
+<p>The <strong>Lorentz force</strong>, given by:</p>
+<p><span class="arithmatex">\(\vec{F} = q(\vec{E} + \vec{v} \times \vec{B})\)</span></p>
+<p>is crucial in:</p>
+<ul>
+<li><strong>Particle accelerators</strong> – where magnetic fields steer high-energy particles.</li>
+<li><strong>Mass spectrometers</strong> – which use <span class="arithmatex">\(\vec{E}\)</span> and <span class="arithmatex">\(\vec{B}\)</span> to separate ions by mass.</li>
+<li><strong>Plasma confinement</strong> – e.g. in tokamaks, where particles spiral due to strong magnetic fields.</li>
+<li><strong>Astrophysics</strong> – charged particles in cosmic fields follow complex paths due to Lorentz force.</li>
+</ul>
+<p>Electric fields <span class="arithmatex">\(\vec{E}\)</span> accelerate charged particles, while magnetic fields <span class="arithmatex">\(\vec{B}\)</span> bend their trajectories perpendicularly to velocity.</p>
+<hr/>
+<h2 id="2-simulating-particle-motion">2. Simulating Particle Motion</h2>
+<p>We simulate a particle with:</p>
+<ul>
+<li><span class="arithmatex">\(q = 1 \, \text{C}\)</span></li>
+<li><span class="arithmatex">\(m = 1 \, \text{g} = 0.001 \, \text{kg}\)</span></li>
+</ul>
+<h3 id="scenarios">Scenarios:</h3>
+<ul>
+<li><strong>Uniform magnetic field only</strong> – expect circular motion.</li>
+<li><strong>Uniform electric + magnetic field</strong> – expect helical or drift paths.</li>
+<li><strong>Crossed <span class="arithmatex">\(\vec{E} \perp \vec{B}\)</span></strong> – observe <span class="arithmatex">\(\vec{E} \times \vec{B}\)</span> drift.</li>
+</ul>
+<hr/>
+<h2 id="3-parameter-exploration">3. Parameter Exploration</h2>
+<p>Parameters to vary:</p>
+<ul>
+<li>Magnetic field <span class="arithmatex">\(\vec{B}\)</span>: magnitude and direction.</li>
+<li>Electric field <span class="arithmatex">\(\vec{E}\)</span></li>
+<li>Initial velocity <span class="arithmatex">\(\vec{v}_0\)</span></li>
+<li>Charge <span class="arithmatex">\(q\)</span> and mass <span class="arithmatex">\(m\)</span></li>
+</ul>
+<p>Observe:</p>
+<ul>
+<li><strong>Larmor radius</strong>: <span class="arithmatex">\(r_L = \frac{mv}{|qB|}\)</span></li>
+<li><strong>Drift velocity</strong>: <span class="arithmatex">\(\vec{v}_d = \frac{\vec{E} \times \vec{B}}{B^2}\)</span></li>
+</ul>
+<hr/>
+<h2 id="4-visualization">4. Visualization</h2>
+<ul>
+<li>Plot <strong>2D</strong> (xy) and <strong>3D</strong> trajectories</li>
+<li>Circle, spiral in z-direction, or other interesting paths</li>
+<li>Emphasize physical concepts (e.g., radius, velocity vector)</li>
+<li>Simulation Output:</li>
+</ul>
+<h2 id="_1"><img alt="alt text" src="../image.png"/></h2>
+<h2 id="python-simulation-code">Python Simulation Code</h2>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+# Constants
+q = 1.0       # Charge [C]
+m = 0.001     # Mass [kg]
+dt = 1e-6     # Time step [s]
+steps = 10000 # Number of steps
+
+# Fields
+E = np.array([0.0, 0.0, 0.0])   # Uniform electric field [V/m]
+B = np.array([0.0, 0.0, 1.0])   # Uniform magnetic field [T]
+
+# Initial conditions
+v = np.array([10.0, 0.0, 0.0])  # Initial velocity [m/s]
+r = np.array([0.0, 0.0, 0.0])   # Initial position [m]
+
+# Trajectory
+trajectory = [r.copy()]
+
+# Euler method simulation
+for _ in range(steps):
+    F = q * (E + np.cross(v, B))         # Lorentz force
+    a = F / m                            # Acceleration
+    v = v + a * dt                       # Update velocity
+    r = r + v * dt                       # Update position
+    trajectory.append(r.copy())
+
+trajectory = np.array(trajectory)
+
+# Plotting
+fig = plt.figure(figsize=(12,6))
+
+# 2D projection
+ax1 = fig.add_subplot(121)
+ax1.plot(trajectory[:,0], trajectory[:,1])
+ax1.set_title('2D Trajectory (XY)')
+ax1.set_xlabel('X (m)')
+ax1.set_ylabel('Y (m)')
+ax1.axis('equal')
+
+# 3D trajectory
+ax2 = fig.add_subplot(122, projection='3d')
+ax2.plot(trajectory[:,0], trajectory[:,1], trajectory[:,2])
+ax2.set_title('3D Trajectory')
+ax2.set_xlabel('X (m)')
+ax2.set_ylabel('Y (m)')
+ax2.set_zlabel('Z (m)')
+
+plt.tight_layout()
+plt.show()
+</code></pre>
+<hr/>
+<h2 id="discussion">🔍 Discussion</h2>
+<ul>
+<li>In a <strong>pure magnetic field</strong>, the particle undergoes circular motion in a plane perpendicular to <span class="arithmatex">\(\vec{B}\)</span>, due to the centripetal nature of the Lorentz force.</li>
+<li>Adding a <strong>parallel electric field</strong> induces spiral motion (helical path).</li>
+<li>In <strong>crossed fields</strong>, the particle drifts at velocity <span class="arithmatex">\(\vec{v}_d = \vec{E} \times \vec{B}/B^2\)</span> — used in devices like velocity selectors.</li>
+<li>The <strong>Larmor radius</strong> and <strong>gyrofrequency</strong> can be observed directly in the plotted paths.</li>
+</ul>
+<hr/>
+<h2 id="extensions">🧐 Extensions</h2>
+<ul>
+<li>Add non-uniform or time-varying fields.</li>
+<li>Use Runge-Kutta method for better precision.</li>
+<li>Add collisions (e.g., plasma modeling).</li>
+<li>Explore relativistic effects at high velocities.</li>
+</ul>
+<p><a href="https://colab.research.google.com/drive/1mKzx5NRdaniyCGZngB0npskZLA5BKDbT">MyColab</a></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
