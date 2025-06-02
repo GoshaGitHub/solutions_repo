@@ -81,6 +81,7 @@ $A --(5Ω)-- B --(10Ω)-- C$
 Result: $`R_eq = 15Ω`$
 
 ![alt text](example1_series.png)
+
 ### Example 2 – Parallel Only
 $
 A --(10Ω)-- B
@@ -102,6 +103,7 @@ Combined:
 $R_(parallel) = 1 / (1/30 + 1/30) = 15Ω$
 
 Equivalent resistance from A to D: 30Ω
+
 ![alt text](image-2.png)
 ---
 
