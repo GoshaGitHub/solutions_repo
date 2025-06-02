@@ -18,9 +18,9 @@ Monte Carlo simulations use randomness to solve mathematical problems. One of th
 
 We simulate random points in a square that bounds a unit circle (radius = 1). The area of the circle is $ \pi r^2 $, and the square’s area is $ (2r)^2 = 4 $. The ratio gives:
 
-$
+$$
 \frac{\text{Points inside circle}}{\text{Total points}} \approx \frac{\pi}{4} \Rightarrow \pi \approx 4 \cdot \frac{\text{Points inside}}{\text{Total points}}
-$
+$$
 
 ---
 
@@ -28,9 +28,7 @@ $
 
 We generate random points $(x, y)$ in the square $[-1, 1] \times [-1, 1]$, then count how many fall inside the circle using the condition:
 
-$
-x^2 + y^2 \leq 1
-$
+$x^2 + y^2 \leq 1$
 
 ---
 
