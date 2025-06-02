@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 2 - Physics and Mathematics</title>
+<title>2️⃣ - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 2";
+        var mkdocs_page_name = "2\ufe0f\u20e3";
         var mkdocs_page_input_path = "1 Physics/6 Statistics/Problem_2.md";
         var mkdocs_page_url = null;
       </script>
@@ -76,15 +76,15 @@
 </li>
 <li class="toctree-l1"><a class="reference internal">5 Circuits</a>
 <ul>
-<li class="toctree-l2"><a class="reference internal" href="../../5%20Circuits/Problem_1/">Problem 1</a>
+<li class="toctree-l2"><a class="reference internal" href="../../5%20Circuits/Problem_1/">Equivalent Resistance Using Graph Theory</a>
 </li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal current">6 Statistics</a>
 <ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../Problem_1/">Problem 1</a>
+<li class="toctree-l2"><a class="reference internal" href="../Problem_1/">1️⃣</a>
 </li>
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 2</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">2️⃣</a>
 <ul class="current">
 </ul>
 </li>
@@ -163,7 +163,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">1 Physics</li>
 <li class="breadcrumb-item">6 Statistics</li>
-<li class="breadcrumb-item active">Problem 2</li>
+<li class="breadcrumb-item active">2️⃣</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -171,11 +171,142 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-2">Problem 2</h1>
+<h1 id="2">2️⃣</h1>
+<h1 id="estimating-using-monte-carlo-methods">Estimating π Using Monte Carlo Methods</h1>
+<h2 id="1-problem-statement">1. Problem Statement</h2>
+<p>Monte Carlo simulations use randomness to solve mathematical problems. One of the most elegant uses is estimating the value of π. We will explore two approaches:</p>
+<ol>
+<li>Estimating π using a circle.</li>
+<li>Estimating π using Buffon’s Needle experiment.</li>
+</ol>
+<hr/>
+<h2 id="2-part-1-estimating-using-a-circle">2. Part 1: Estimating π Using a Circle</h2>
+<h3 id="1-theoretical-foundation">1. Theoretical Foundation</h3>
+<p>We simulate random points in a square that bounds a unit circle (radius = 1). The area of the circle is $ \pi r^2 $, and the square’s area is $ (2r)^2 = 4 $. The ratio gives:</p>
+<p>$
+\frac{\text{Points inside circle}}{\text{Total points}} \approx \frac{\pi}{4} \Rightarrow \pi \approx 4 \cdot \frac{\text{Points inside}}{\text{Total points}}
+$</p>
+<hr/>
+<h3 id="2-simulation">2. Simulation</h3>
+<p>We generate random points <span class="arithmatex">\((x, y)\)</span> in the square <span class="arithmatex">\([-1, 1] \times [-1, 1]\)</span>, then count how many fall inside the circle using the condition:</p>
+<p>$
+x^2 + y^2 \leq 1
+$</p>
+<hr/>
+<h3 id="3-python-implementation">3. Python Implementation</h3>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+def monte_carlo_pi(n_points):
+    x = np.random.uniform(-1, 1, n_points)
+    y = np.random.uniform(-1, 1, n_points)
+    inside = x**2 + y**2 &lt;= 1
+    pi_estimate = 4 * np.sum(inside) / n_points
+
+    plt.figure(figsize=(6,6))
+    plt.scatter(x[inside], y[inside], color='blue', s=1, label='Inside Circle')
+    plt.scatter(x[~inside], y[~inside], color='red', s=1, label='Outside Circle')
+    plt.title(f"Monte Carlo π Estimate: {pi_estimate:.6f} (n={n_points})")
+    plt.gca().set_aspect('equal')
+    plt.legend()
+    plt.show()
+
+    return pi_estimate
+</code></pre>
+<hr/>
+<h3 id="4-visualization">4. Visualization</h3>
+<h2 id="_1"><img alt="alt text" src="../image-3.png"/></h2>
+<h3 id="5-analysis">5. Analysis</h3>
+<ul>
+<li>As the number of points increases, the estimate becomes more accurate.</li>
+<li>Convergence rate is approximately $ \mathcal{O}(1/\sqrt{N}) $.</li>
+<li>Simple to implement, but requires many iterations for high accuracy.</li>
+</ul>
+<hr/>
+<h2 id="part-2-estimating-using-buffons-needle">Part 2: Estimating π Using Buffon’s Needle</h2>
+<h3 id="1-theoretical-foundation_1">1. Theoretical Foundation</h3>
+<p>Buffon’s Needle problem estimates π from the probability of a needle crossing lines spaced at distance $ d $, using a needle of length $ l \leq d $.</p>
+<p>$
+P = \frac{2l}{\pi d} \Rightarrow \pi \approx \frac{2l \cdot N}{d \cdot H}
+$</p>
+<p>Where:
+- $ N $: total needle drops
+- $ H $: number of hits (crossings)</p>
+<hr/>
+<h3 id="2-simulation_1">2. Simulation</h3>
+<p>A needle crosses a line if:</p>
+<p>$
+\frac{l}{2} \cdot \sin(\theta) \geq \text{distance from center to nearest line}
+$</p>
+<hr/>
+<h3 id="3-python-implementation_1">3. Python Implementation</h3>
+<pre><code class="language-python">def buffon_needle(n_drops, l=1.0, d=2.0):
+    hits = 0
+    xs, ys, angles = [], [], []
+    for _ in range(n_drops):
+        center_y = np.random.uniform(0, d/2)
+        theta = np.random.uniform(0, np.pi / 2)
+        if (l / 2) * np.sin(theta) &gt;= center_y:
+            hits += 1
+        xs.append(center_y)
+        ys.append(theta)
+        angles.append(theta)
+
+    pi_estimate = (2 * l * n_drops) / (d * hits) if hits != 0 else 0
+
+    plt.figure(figsize=(6, 6))
+    for i in range(n_drops):
+        y0 = xs[i]
+        angle = angles[i]
+        x_start = 0
+        x_end = np.cos(angle)
+        y_start = y0
+        y_end = y0 + np.sin(angle)
+        color = 'green' if (l / 2) * np.sin(angle) &gt;= y0 else 'gray'
+        plt.plot([x_start, x_end], [y_start, y_end], color=color, alpha=0.6)
+
+    for i in range(5):
+        plt.axhline(i * d / 4, color='black', linestyle='--', linewidth=0.5)
+
+    plt.title(f"Buffon's Needle π Estimate: {pi_estimate:.6f} (n={n_drops})")
+    plt.xlim(0, 1)
+    plt.ylim(0, d/2)
+    plt.show()
+
+    return pi_estimate
+</code></pre>
+<hr/>
+<h3 id="4-visualization_1">4. Visualization</h3>
+<p><img alt="alt text" src="../image-4.png"/></p>
+<hr/>
+<h3 id="5-analysis_1">5. Analysis</h3>
+<ul>
+<li>Buffon’s method converges slowly compared to the circle method.</li>
+<li>Physically inspired and useful for demonstrating probabilistic geometry.</li>
+<li>Useful for introducing students to the intersection of geometry and probability.</li>
+</ul>
+<hr/>
+<h2 id="convergence-analysis">Convergence Analysis</h2>
+<p>To compare both methods:</p>
+<ol>
+<li>Run multiple trials (e.g., with 100, 1,000, 10,000, 100,000 iterations).</li>
+<li>Track estimated π values.</li>
+<li>Plot error vs. number of iterations.</li>
+</ol>
+<p><em>Insert table or plot comparing convergence of both methods here.</em></p>
+<hr/>
+<h2 id="conclusion">✅ Conclusion</h2>
+<ul>
+<li><strong>Circle-based Monte Carlo</strong> is more accurate per iteration.</li>
+<li><strong>Buffon’s Needle</strong> is slower but more interesting geometrically.</li>
+<li>Both show how randomness and geometry can estimate fundamental constants.</li>
+</ul>
+<hr/>
+<p><a href="https://colab.research.google.com/drive/1CFJ_4NRtj9A94cJfHfjWg8sAwGcoUq_c">MyColab</a></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
-<a class="btn btn-neutral float-left" href="../Problem_1/" title="Problem 1"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-left" href="../Problem_1/" title="1️⃣"><span class="icon icon-circle-arrow-left"></span> Previous</a>
 <a class="btn btn-neutral float-right" href="../../7%20Measurements/Problem_1/" title="Problem 1">Next <span class="icon icon-circle-arrow-right"></span></a>
 </div>
 <hr/>

@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 1 - Physics and Mathematics</title>
+<title>1️⃣ - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 1";
+        var mkdocs_page_name = "1\ufe0f\u20e3";
         var mkdocs_page_input_path = "1 Physics/6 Statistics/Problem_1.md";
         var mkdocs_page_url = null;
       </script>
@@ -76,17 +76,17 @@
 </li>
 <li class="toctree-l1"><a class="reference internal">5 Circuits</a>
 <ul>
-<li class="toctree-l2"><a class="reference internal" href="../../5%20Circuits/Problem_1/">Problem 1</a>
+<li class="toctree-l2"><a class="reference internal" href="../../5%20Circuits/Problem_1/">Equivalent Resistance Using Graph Theory</a>
 </li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal current">6 Statistics</a>
 <ul class="current">
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">1️⃣</a>
 <ul class="current">
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../Problem_2/">Problem 2</a>
+<li class="toctree-l2"><a class="reference internal" href="../Problem_2/">2️⃣</a>
 </li>
 </ul>
 </li>
@@ -163,7 +163,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">1 Physics</li>
 <li class="breadcrumb-item">6 Statistics</li>
-<li class="breadcrumb-item active">Problem 1</li>
+<li class="breadcrumb-item active">1️⃣</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -171,12 +171,103 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-1">Problem 1</h1>
+<h1 id="1">1️⃣</h1>
+<h1 id="exploring-the-central-limit-theorem-through-simulations">Exploring the Central Limit Theorem through Simulations</h1>
+<h2 id="1-motivation">1. Motivation</h2>
+<p>The Central Limit Theorem (CLT) states that the sampling distribution of the sample mean becomes approximately normal as the sample size increases, regardless of the shape of the population distribution. This principle underpins many statistical methods and is fundamental in real-world applications.</p>
+<hr/>
+<h2 id="2-simulating-sampling-distributions">2. Simulating Sampling Distributions</h2>
+<p>We'll explore three types of population distributions:</p>
+<ul>
+<li><strong>Uniform distribution</strong>: Evenly distributed values.</li>
+<li><strong>Exponential distribution</strong>: Skewed, non-symmetric.</li>
+<li><strong>Binomial distribution</strong>: Discrete with two outcomes.</li>
+</ul>
+<p>Each distribution is simulated using a large population of 100,000 elements.</p>
+<hr/>
+<h2 id="3-sampling-and-visualization">3. Sampling and Visualization</h2>
+<p>For each distribution, we take repeated random samples with the following sizes:</p>
+<ul>
+<li>5, 10, 30, and 50</li>
+</ul>
+<p>For each sample size, we repeat sampling 1000 times and calculate the <strong>sample mean</strong> to form the <strong>sampling distribution</strong>.</p>
+<hr/>
+<h2 id="4-parameter-exploration">4. Parameter Exploration</h2>
+<p>We explore:</p>
+<ul>
+<li>How quickly the sampling distribution approaches normality as the sample size increases.</li>
+<li>How the <strong>population’s variance</strong> affects the spread of the sample mean distribution.</li>
+</ul>
+<hr/>
+<h2 id="5-practical-applications-of-clt">5. Practical Applications of CLT</h2>
+<ul>
+<li><strong>Estimating population parameters</strong>: Even if a population is not normally distributed, large enough samples allow valid inference using normal theory.</li>
+<li><strong>Quality control</strong>: In manufacturing, averages of product measurements are used for control charts.</li>
+<li><strong>Financial modeling</strong>: Portfolio returns often use the normal approximation via CLT.</li>
+</ul>
+<hr/>
+<h2 id="6-python-code-for-simulation-and-visualization">6. Python Code for Simulation and Visualization</h2>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Seaborn style for better visuals
+sns.set(style="whitegrid")
+
+# Parameters
+sample_sizes = [5, 10, 30, 50]
+n_simulations = 1000
+population_size = 100000
+
+# Distributions to explore
+distributions = {
+    "Uniform": np.random.uniform(0, 1, population_size),
+    "Exponential": np.random.exponential(1, population_size),
+    "Binomial": np.random.binomial(n=10, p=0.5, size=population_size)
+}
+
+# Plotting
+for dist_name, population in distributions.items():
+    plt.figure(figsize=(16, 10))
+    for i, n in enumerate(sample_sizes, 1):
+        sample_means = []
+        for _ in range(n_simulations):
+            sample = np.random.choice(population, size=n, replace=False)
+            sample_means.append(np.mean(sample))
+        plt.subplot(2, 2, i)
+        sns.histplot(sample_means, bins=30, kde=True, color="skyblue")
+        plt.title(f"{dist_name} Distribution - Sample Size {n}")
+        plt.xlabel("Sample Mean")
+        plt.ylabel("Frequency")
+    plt.suptitle(f"Sampling Distribution of the Mean - {dist_name}", fontsize=16)
+    plt.tight_layout(rect=[0, 0, 1, 0.95])
+    plt.show()
+</code></pre>
+<p><img alt="alt text" src="../image.png"/>
+<img alt="alt text" src="../image-1.png"/>
+<img alt="alt text" src="../image-2.png"/></p>
+<hr/>
+<h2 id="7-discussion-insights">7. Discussion &amp; Insights</h2>
+<ul>
+<li><strong>Uniform Distribution</strong>: Converges quickly to normality even with small sample sizes.</li>
+<li><strong>Exponential Distribution</strong>: Highly skewed at the population level but still shows convergence around sample size 30+.</li>
+<li><strong>Binomial Distribution</strong>: Initially discrete, but sampling smooths out the mean distribution, approaching normality.</li>
+</ul>
+<h3 id="effect-of-population-variance">Effect of Population Variance</h3>
+<p>The spread (standard deviation) of the sample mean decreases with increasing sample size. This is predicted by:</p>
+<div class="arithmatex">\[
+\text{Standard Error} = \frac{\sigma}{\sqrt{n}}
+\]</div>
+<p>This highlights how variance impacts the precision of sample estimates.</p>
+<hr/>
+<h2 id="conclusion">Conclusion</h2>
+<p>This simulation-driven approach demonstrates the <strong>power and universality of the Central Limit Theorem</strong>. Even for non-normal populations, the distribution of the sample mean becomes approximately normal as sample size grows. This supports many practical applications in statistics, quality control, finance, and science.</p>
+<p><a href="https://colab.research.google.com/drive/1bml8YQyBPCXAUz1Xux_gAO87PkD1DSYk">MyColab</a></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
-<a class="btn btn-neutral float-left" href="../../5%20Circuits/Problem_1/" title="Problem 1"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-<a class="btn btn-neutral float-right" href="../Problem_2/" title="Problem 2">Next <span class="icon icon-circle-arrow-right"></span></a>
+<a class="btn btn-neutral float-left" href="../../5%20Circuits/Problem_1/" title="Equivalent Resistance Using Graph Theory"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../Problem_2/" title="2️⃣">Next <span class="icon icon-circle-arrow-right"></span></a>
 </div>
 <hr/>
 <div role="contentinfo">

@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 1 - Physics and Mathematics</title>
+<title>Equivalent Resistance Using Graph Theory - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 1";
+        var mkdocs_page_name = "Equivalent Resistance Using Graph Theory";
         var mkdocs_page_input_path = "1 Physics/5 Circuits/Problem_1.md";
         var mkdocs_page_url = null;
       </script>
@@ -76,17 +76,37 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal current">5 Circuits</a>
 <ul class="current">
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">Equivalent Resistance Using Graph Theory</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#1-problem-statement">1. Problem Statement</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#2-algorithm-explanation">2. Algorithm Explanation</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#3-key-reduction-rules">3. Key Reduction Rules</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#4-python-implementation-with-networkx">4. Python Implementation (with NetworkX)</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#5-example-scenarios">5. Example Scenarios</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-1-series-only">Example 1 – Series Only</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example-2-parallel-only">Example 2 – Parallel Only</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example-3-mixed-like-in-code-above">Example 3 – Mixed (like in code above)</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#6-efficiency-improvements">6. Efficiency &amp; Improvements</a>
+</li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal">6 Statistics</a>
 <ul>
-<li class="toctree-l2"><a class="reference internal" href="../../6%20Statistics/Problem_1/">Problem 1</a>
+<li class="toctree-l2"><a class="reference internal" href="../../6%20Statistics/Problem_1/">1️⃣</a>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../6%20Statistics/Problem_2/">Problem 2</a>
+<li class="toctree-l2"><a class="reference internal" href="../../6%20Statistics/Problem_2/">2️⃣</a>
 </li>
 </ul>
 </li>
@@ -163,7 +183,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">1 Physics</li>
 <li class="breadcrumb-item">5 Circuits</li>
-<li class="breadcrumb-item active">Problem 1</li>
+<li class="breadcrumb-item active">Equivalent Resistance Using Graph Theory</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -171,12 +191,141 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-1">Problem 1</h1>
+<h1 id="equivalent-resistance-using-graph-theory">Equivalent Resistance Using Graph Theory</h1>
+<h2 id="1-problem-statement">1. Problem Statement</h2>
+<p><strong>Goal:</strong> Compute the equivalent resistance between two nodes in a resistor network using graph theory.</p>
+<hr/>
+<h2 id="2-algorithm-explanation">2. Algorithm Explanation</h2>
+<p>We treat the resistor network as an undirected <strong>weighted graph</strong>, where:</p>
+<ul>
+<li><strong>Nodes</strong> represent junctions in the circuit.</li>
+<li><strong>Edges</strong> represent resistors with weights equal to resistance values.</li>
+<li>The task is to find the <strong>equivalent resistance</strong> between two specific nodes (source and target).</li>
+</ul>
+<hr/>
+<h2 id="3-key-reduction-rules">3. Key Reduction Rules</h2>
+<ol>
+<li>
+<p><strong>Series Reduction:</strong>
+   If a node has exactly two neighbors and is not the source or target, we can collapse it:
+   <span class="arithmatex">\(R_eq = R1 + R2\)</span></p>
+</li>
+<li>
+<p><strong>Parallel Reduction:</strong>
+   If multiple edges connect the same pair of nodes:</p>
+</li>
+</ol>
+<p><span class="arithmatex">\(1/R_eq = sum(1/Ri)\)</span></p>
+<ol>
+<li><strong>General Case:</strong>
+   Use <strong>Kirchhoff's laws</strong> and <strong>linear algebra</strong> to solve for node potentials and derive current, if needed. But for simplification and automation, we reduce the graph step by step using rules above.</li>
+</ol>
+<hr/>
+<h2 id="4-python-implementation-with-networkx">4. Python Implementation (with NetworkX)</h2>
+<pre><code class="language-python">import networkx as nx
+import matplotlib.pyplot as plt
+
+def combine_parallel_edges(G):
+ to_add = []
+ to_remove = []
+ for u, v in G.edges():
+     all_edges = G.get_edge_data(u, v)
+     if all_edges and len(all_edges) &gt; 1:
+         total_inv = sum(1 / d['resistance'] for d in all_edges.values())
+         req = 1 / total_inv
+         to_add.append((u, v, {'resistance': req}))
+         to_remove.extend((u, v, k) for k in all_edges)
+
+ for u, v, k in to_remove:
+     G.remove_edge(u, v, key=k)
+ for u, v, data in to_add:
+     G.add_edge(u, v, resistance=data['resistance'])
+
+def reduce_series_nodes(G, source, target):
+ changed = True
+ while changed:
+     changed = False
+     for node in list(G.nodes()):
+         if node in [source, target]:
+             continue
+         neighbors = list(G.neighbors(node))
+         if len(neighbors) == 2:
+             u, v = neighbors
+             if G.number_of_edges(u, node) == 1 and G.number_of_edges(node, v) == 1:
+                 r1 = G[u][node][0]['resistance']
+                 r2 = G[node][v][0]['resistance']
+                 G.add_edge(u, v, resistance=r1 + r2)
+                 G.remove_node(node)
+                 changed = True
+                 break
+
+def calculate_equivalent_resistance(G, source, target):
+ combine_parallel_edges(G)
+ reduce_series_nodes(G, source, target)
+ if G.has_edge(source, target):
+     return G[source][target][0]['resistance']
+ else:
+     return "Could not reduce the circuit to a single resistance."
+
+def draw_circuit(G):
+ pos = nx.spring_layout(G, seed=42)
+ edge_labels = {(u, v): f"{d['resistance']}Ω" for u, v, d in G.edges(data=True)}
+
+ plt.figure(figsize=(6, 4))
+ nx.draw(G, pos, with_labels=True, node_color='lightblue', edge_color='gray', node_size=800, font_size=10)
+ nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=9)
+ plt.title("Circuit Graph")
+ plt.axis('off')
+ plt.show()
+
+G = nx.MultiGraph()
+G.add_edge('A', 'B', resistance=5)
+G.add_edge('B', 'C', resistance=10)
+G.add_edge('C', 'D', resistance=15)
+G.add_edge('A', 'D', resistance=30)
+
+draw_circuit(G)
+
+print("Equivalent resistance from A to D:")
+print(calculate_equivalent_resistance(G, 'A', 'D'))
+</code></pre>
+<hr/>
+<h2 id="5-example-scenarios">5. Example Scenarios</h2>
+<h3 id="example-1-series-only">Example 1 – Series Only</h3>
+<p><span class="arithmatex">\(A --(5Ω)-- B --(10Ω)-- C\)</span></p>
+<p>Result: <span class="arithmatex">\(<code>R_eq = 15Ω</code>\)</span></p>
+<p><img alt="alt text" src="../example1_series.png"/></p>
+<h3 id="example-2-parallel-only">Example 2 – Parallel Only</h3>
+<p>$
+A --(10Ω)-- B
+A --(20Ω)-- B
+$</p>
+<p>Result: <span class="arithmatex">\(R_eq = 1 / (1/10 + 1/20) = 6.67Ω\)</span></p>
+<p><img alt="alt text" src="../example2_parallel.png"/></p>
+<h3 id="example-3-mixed-like-in-code-above">Example 3 – Mixed (like in code above)</h3>
+<p>$
+A --(5Ω)-- B --(10Ω)-- C --(15Ω)-- D
+A ----------------------------- D (30Ω)
+$</p>
+<p>Combined:</p>
+<p><span class="arithmatex">\(R_(parallel) = 1 / (1/30 + 1/30) = 15Ω\)</span></p>
+<p>Equivalent resistance from A to D: 30Ω
+<img alt="alt text" src="../image-2.png"/></p>
+<hr/>
+<h2 id="6-efficiency-improvements">6. Efficiency &amp; Improvements</h2>
+<ul>
+<li><strong>Time complexity:</strong> Each reduction (series or parallel) is linear with respect to number of nodes/edges.</li>
+<li><strong>Can be improved with:</strong></li>
+<li>Better pattern detection for mesh loops (needs Kirchhoff's matrix method).</li>
+<li>Symbolic computation (e.g. using <code>sympy</code>) for algebraic analysis.</li>
+</ul>
+<hr/>
+<p><a href="https://colab.research.google.com/drive/1N9GhH4rj1tMBkMUB1heCw_wN-RjVxabN">MyColab</a></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
 <a class="btn btn-neutral float-left" href="../../4%20Electromagnetism/Problem_1/" title="1️⃣"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-<a class="btn btn-neutral float-right" href="../../6%20Statistics/Problem_1/" title="Problem 1">Next <span class="icon icon-circle-arrow-right"></span></a>
+<a class="btn btn-neutral float-right" href="../../6%20Statistics/Problem_1/" title="1️⃣">Next <span class="icon icon-circle-arrow-right"></span></a>
 </div>
 <hr/>
 <div role="contentinfo">
